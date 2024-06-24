@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=admin/base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+    <div class="container-xl mt-5 p-5">
+    <div class="row">
+    
+   
+       <div class="col-md-6 p-3">
+         <div th:if="${session.message}" class="container text-center">
+        
+                               <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center my-1" role="alert">
+          
+                                  <span th:text="${session.message.contect}"></span>
+                                  <th:block th:text="${@sessionHelper.removeSessionFromHelper()}"></th:block>
+                              
+                              </div>
+
+                           </div>
+           <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Sl No.</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Role</th>
+		      <th scope="col">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  <th:block th:each="aduser,au:${adminusers}">
+		    <tr>
+		      <th >[[${au.count}]]</th>
+		      <td>[[${aduser.name}]]</td>
+		      <td>[[${aduser.email}]]</td>
+		      <td>[[${aduser.role}]]</td>
+		      <td><a th:href="@{'/admin/adminuser/'+${aduser.id}}" class="text-danger"><i class="fa-regular fa-trash-can"></i></a></td>
+		    </tr>
+		    </th:block>
+		  </tbody>
+		</table>
+       </div>
+       
+       <div class="col-md-6 p-1 " style="margin-top: -85px">
+          <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+             <div class="card-header">
+              
+              <!--   <div class="buttons text-center mb-4">
+	    <button class="btn-hover color-1">See Admins</button>    
+	    </div> -->
+           <p class="text-center " style="font-size: 25px">Add Admin</p>
+             </div>
+              
+              <div class="card-body">
+                  <form th:action="@{/admin/add-addmin}" method="post" enctype="multipart/form-data">
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Name</label>
+                         <input type="text" name="name" placeholder="Enter Name " class="form-control" required />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Mobile No.</label>
+                           <input type="number" name="mobile" placeholder="Mobile Number" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="mb-3">
+                         <label for="" class="form-label">Email</label>
+                         <input type="email" name="email" placeholder="Enter Email " class="form-control" />
+                       </div>
+                       
+                       <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Address</label>
+                         <input type="text" name="address" placeholder="Enter Address " class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">city</label>
+                           <input type="text" name="city" placeholder="Enter City" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">State</label>
+                         <input type="text" name="state" placeholder=" " class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Pin Code</label>
+                           <input type="number" name="pincode" placeholder="" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Password</label>
+                         <input type="password" name="password" placeholder="******" class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Confirm Password</label>
+                           <input type="password" name="cpassword" placeholder="******" class="form-control" />
+                           </div>
+                      </div>
+                      
+                       <div class="mb-3">
+                           <label for="" class="form-label">Profile Picture</label>
+                           <input type="file" name="file" placeholder="" class="form-control" />
+                           </div>
+                      
+						   <div class="container text-center">
+						 
+						  
+						  <button class="button animated-button ">Add</button>
+						  </div>
+						                             
+                         <div class="row mt-2">
+                         <div class="col">
+                         <a th:href="@{/admin/}" class="form-control btn btn-warning text-white">Back</a>
+                         </div>
+                         <div class="col">
+                         <input type="reset" value="Reset" class="form-control btn btn-secondary" />
+                         </div>
+                         </div>           
+                  </form>
+                  
+                  
+              </div>
+          </div>
+       </div>
+       </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+.card-sh {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+ .card-sh:hover {
+		            transform: scale(1.05);
+		            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		        }
+.card-body {
+		            padding: 2rem;
+		        }
+.text-primary {
+		            color: #007bff !important;
+		        }
+
+/* add products admin */
+
+.card-shl {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-shl:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        
+        
+        
+/* admin admin */
+.animated-button {
+  background-color: #008CBA;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px 0 #006699;
+  width: 350px;
+  animation: example 1s infinite;
+}
+
+@keyframes example {
+  0% {background-color: #008CBA;}
+  50% {background-color: #006699;}
+  100% {background-color: #008CBA;}
+}
+
+/* see admins 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin: 5%;
+   
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-1 {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}*/

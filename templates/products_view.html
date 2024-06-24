@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container-fluid " style="margin-top: 35px;margin-bottom: 50px" th:object="${pro}" >
+     
+   <div class="col-md-12">
+        <div class="row " >
+        
+	         <div class="col-md-6 text-right mt-4">
+	              <img  class="p-3 " src="" th:src="@{'/img/product_img/'+${pro.upimg}}" height="400px" width="380px" alt="" />
+	         </div>
+       
+     
+      <div class="col-md-6 p-4 mt-5">
+           <p class="fs-3" style="font-size: 20px;font-weight: bold">[[${pro.title}]]</p>
+           <p>
+            <span class="fw-bold"style="font-weight: bold">Description</span><br>[[${pro.description}]]
+           </p>
+           <p>
+            <span class="fw-bold" style="font-weight: bold">Product Details</span><br>status:
+            <span class="badge bg-success">[[${pro.stock}]]</span>
+            <br>category:&nbsp;&nbsp; [[${pro.pcategory}]] <br>policy: 7 days replacement and return
+           </p>
+           
+           <p class="fw-bold">
+           price :&nbsp; <i class="fas fa-rupee-sign"></i> [[${pro.discountedPrice}]]
+             <span class="fs-6 text-decoration-line-through text-secondary">
+              <del>   [[${pro.price}]] </del>
+             </span>
+             <span class="fs-6 text-success">[[${pro.discount}]]%off</span>
+           </p>
+           
+           <div class="row">
+               <div class="col-md-4 text-center text-success p-2">
+                  <i class="fa-solid fa-truck"></i>
+                  <p>cash on delivery</p>
+               </div>
+               
+               <div class="col-md-4 text-center text-danger">
+                  <i class="fas fa-undo-alt "></i>
+                  <p>Available</p>
+               </div>
+               
+               <div class="col-md-4 text-center text-primary">
+                 <i class="fa-solid fa-truck-fast"></i>
+                  <p>Shipping</p>
+               </div>
+           </div>
+           
+          
+               <div class="container">
+               <th:block th:if="${pro.stock=='available'}">
+             <a class="btn btn-danger col-md-12 text-white"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</a>
+               </th:block>
+               
+               <th:block th:unless="${pro.stock=='available'}">
+             <a href="#" class="btn btn-warning col-md-12 text-white"><i class="fa-solid fa-cart-shopping"></i> Out Of Stock</a>
+               </th:block>
+             </div>
+           
+           
+      </div>
+      
+      
+      </div>
+       
+   </div>  
+   
+</div>
+</section>
+</body>
+</html>

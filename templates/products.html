@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <section>
+  
+     <div class="container-fluid p-5" style="margin-top: -30px">
+        <div class="row">
+        <div class="col-md-2">
+        <a th:href="@{/}" class="form-control text-center btn btn-secondary"> <i class="fa-solid fa-backward"></i> &nbsp;Back</a>
+        </div>
+           <div class="col-md-10 ">
+              <form action="">
+                   <div class="input-group" >
+                      <input type="text" placeholder="Search Here" name="ch" class="form-control "style="border-radius: 10px" />
+                      <button class="btn btn-lightgray p-2 ml-2" style="border-radius: 10px;width: 40px"> <i class="fa-brands fa-searchengin text-center" ></i></button>
+                   </div>
+              </form>
+           </div>
+        </div>
+     </div>
+   
+   <div class="container-fluid  mb-3">
+       <div class="row">
+             <div class="col-md-2">
+                 <div class="list-group">
+                  <div class="card-header text-center mb-1"  style="font-size: 18px;font-weight: bold">Categories</div>
+                    <a th:href="@{/products}" 
+                    class="list-group-item list-group-item-action text-center" 
+                    th:classappend="${paramvalue==''}? 'active': ''"                   
+                     aria-current="true">
+                      All Category
+                      </a>
+                      
+					  <a  th:each="cat:${category}" 
+					  th:href="@{'/products?findcategory='+${cat.category}}" 
+					  th:classappend="${paramvalue==cat.category}? 'active': ''"
+					  class="list-group-item list-group-item-action text-center">[[${cat.category}]]</a>
+					  				  
+                 </div>
+             </div>
+             
+             <div class="col-md-10">
+              
+                <div class="card shadow  mb-5 bg-body-tertiary rounded"> 
+                 <p class="text-center card-header" style="font-size: 18px;font-weight: bold" >Products</p> 
+                 <div class="card-body"> 
+                   
+                   
+                                                                                                                   
+                              <div class="row"> 
+                              <th:block th:if="${products.size>0}">                              
+                              <div class="col-md-3" th:each="pro:${products}">
+                             
+                                   <div class="card ">
+                                     
+                                        <div class="card-body text-center" >
+                                            <img  th:src="@{'/img/product_img/'+${pro.upimg}}" alt=""  width="90%" height="150px"/>
+                                            <p class="text-center"> [[${pro.title}]]</p>
+                                            <div class="row justify-content-center">
+                                            <p class="fw-bolder"style="font-weight:500">  &#8377;[[${pro.discountedPrice}]]</p> <br />
+                                               <p class="text-secondary ">&nbsp; &#8377;<del>[[${pro.price}]]</del> </p>                                             
+                                                <p class="text-success"style="font-size: 13px">&nbsp;<del>[[${pro.discount}]]</del> %off
+                                               </p> 
+                                               
+                                            </div>
+                                            <div class="row">
+                                               <div class="col-md-6">
+                                                <a th:href="@{'product-process/'+${pro.id}}" class="form-control btn btn-success">Details</a>
+                                               </div>
+                                               
+                                               <div class="col-md-6">
+                                                <a th:href="@{'product-process/'+${pro.id}}" class="form-control btn btn-warning"> <i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                                               </div>
+                                            </div>
+                                          
+                                        </div>
+                                         
+                                   </div>
+                                    
+                              </div>
+                           </th:block>
+                           <th:block th:unless="${products.size>0}">
+                           <p class="form-control text-center text-danger border-0">Products Not Available</p>
+                           </th:block>
+                          </div>
+                         
+                     </div>
+                </div>
+             </div>
+             
+       </div>
+   </div>
+    
+  </section>
+</body>
+</html>

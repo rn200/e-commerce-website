@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+    <div class="container mt-5 p-5">
+    <div class="row">
+       <div class="col-md-5 p-1 ">
+            <img src="" th:src="@{img/ecom.png}" alt="" width="100%" height="400px"/>
+       </div>
+       
+       <div class="col-md-7 p-1 " style="margin-top: -85px">
+          <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+             <div class="card-header">
+               <p class="text-center " style="font-size: 25px">Register Here</p>
+             </div>
+                <div th:if="${session.message}" class="container text-center">
+        
+                               <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center my-1" role="alert">
+          
+                                  <span th:text="${session.message.contect}"></span>
+                                  <th:block th:text="${@sessionHelper.removeSessionFromHelper()}"></th:block>
+                              
+                              </div>
+
+                </div>
+              <div class="card-body">
+                  <form th:action="@{/saveuser}" method="post" enctype="multipart/form-data">
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Name</label>
+                         <input type="text" name="name" placeholder="Enter Name " class="form-control" required />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Mobile No.</label>
+                           <input type="number" name="mobile" placeholder="Mobile Number" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="mb-3">
+                         <label for="" class="form-label">Email</label>
+                         <input type="email" name="email" placeholder="Enter Email " class="form-control" />
+                       </div>
+                       
+                       <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Address</label>
+                         <input type="text" name="address" placeholder="Enter Address " class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">city</label>
+                           <input type="text" name="city" placeholder="Enter City" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">State</label>
+                         <input type="text" name="state" placeholder=" " class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Pin Code</label>
+                           <input type="number" name="pincode" placeholder="" class="form-control" />
+                           </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col">
+                         <label for="" class="form-label">Password</label>
+                         <input type="password" name="password" placeholder="******" class="form-control" />
+                          </div>
+                      
+                           <div class="col">
+                           <label for="" class="form-label">Confirm Password</label>
+                           <input type="password" name="cpassword" placeholder="******" class="form-control" />
+                           </div>
+                      </div>
+                      
+                       <div class="mb-3">
+                           <label for="" class="form-label">Profile Picture</label>
+                           <input type="file" name="file" placeholder="" class="form-control" />
+                           </div>
+                      
+                      <button type="submit" class="btn btn-primary  text-white col-md-12" style="font-size: 15px">Register</button>
+                                           
+                  </form>
+                  
+                  <div class="card-footer text-center mt-3">
+                                                                   
+                        Already have an account ? <a href="" th:href="@{/signin}" class="text-decoration-none">Login</a>
+                                       
+                      </div>
+              </div>
+          </div>
+       </div>
+       </div>
+    </div>
+</section>
+</body>
+</html>

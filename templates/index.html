@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+<!-- start slider -->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="" th:src="@{img/ecom1.png}" class="d-block w-100" alt="..." height="350px">
+    </div>
+    <div class="carousel-item">
+     <img src="" th:src="@{img/ecom1.png}" class="d-block w-100" alt="..." height="350px">
+    </div>
+    <div class="carousel-item">
+     <img src="" th:src="@{img/ecom1.png}" class="d-block w-100" alt="..." height="350px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- end slider -->
+
+<!-- start category module -->
+
+   <div class="container">
+   <p class="text-center  mt-3 " style="font-weight: bold;font-size: 30px;font-style: italic;">Category</p>
+      <div class="row"> 
+      <th:block th:each="cat:${category}">        
+          <div class="col-md-2">
+              <div class="card rounded-circle">
+                 <div class="card-body  text-center">
+                 
+                 <img src="" th:src="@{'/img/category_img/'+ ${cat.imagecategory}}" alt=""  height="110px" width="100px"/>
+                 <p>[[${cat.category}]]</p>
+                 </div>
+                 
+              </div>
+          </div>
+       </th:block>                       
+      </div>
+   </div>
+
+<!-- end category module -->
+
+<!-- start latest product module -->
+
+    <div class="container-fluid bg-light p-3">
+   <p class="text-center  mt-3 " style="font-weight: bold;font-size: 30px;font-style: italic;">Latest Product</p>
+      <div class="row">         
+          <div class="col-md-3 ">
+              <div class="card text-center card-shl">
+                 <div class="card-body text-center" >                 
+                 <img src="" th:src="@{img/product_img/laptop.jpg}" alt=""   width="65%" height="140px" />
+                 <p>LG Laptop</p>
+                 </div>             
+              </div>
+          </div>  
+          
+          <div class="col-md-3">
+              <div class="card text-center">
+                 <div class="card-body text-center" >                 
+                 <img src="" th:src="@{img/product_img/laptop.jpg}" alt=""   width="65%" height="140px" />
+                 <p>LG Laptop</p>
+                 </div>             
+              </div>
+          </div>  
+          
+          <div class="col-md-3">
+              <div class="card text-center">
+                 <div class="card-body text-center" >                 
+                 <img src="" th:src="@{img/product_img/laptop.jpg}" alt=""   width="65%" height="140px" />
+                 <p>LG Laptop</p>
+                 </div>             
+              </div>
+          </div>  
+          
+          <div class="col-md-3">
+              <div class="card ">
+                 <div class="card-body text-center" >                 
+                 <img src="" th:src="@{img/product_img/laptop.jpg}" alt=""   width="65%" height="140px" />
+                 <p>LG Laptop</p>
+                 </div>             
+              </div>
+          </div>  
+                                                                                        
+      </div>
+   </div>
+    
+
+<!-- end latest product module -->
+</section>
+</body>
+</html>

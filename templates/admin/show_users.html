@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=admin/base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <section>
+      <div class="container">
+         
+         <div class="card-body">
+          <div class=" text-center card-header form-control" style="font-weight: bold;font-size: 20px">Users Details</div>
+            <div th:if="${session.message}" class="container text-center">
+        
+                               <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center my-1" role="alert">
+          
+                                  <span th:text="${session.message.contect}"></span>
+                                  <th:block th:text="${@sessionHelper.removeSessionFromHelper()}"></th:block>
+                              
+                              </div>
+
+                           </div>
+         </div>
+          
+           <table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col" class="text-center">Sl No.</th>
+			      <th scope="col" class="text-center">Image</th> 
+			      <th scope="col" class="text-center">Name</th>
+			      <th scope="col" class="text-center">Email</th>
+			      <th scope="col" class="text-center">City</th>
+			      <th scope="col" class="text-center">State</th>    
+			      <th scope="col" class="text-center">Status</th>
+			      <th scope="col" class="text-center">Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <th:block th:each="ur,u:${users}">
+			    <tr >
+			      <td scope="row">[[${u.count}]]</td>
+			       <td><img src="" th:src="@{'/img/user_img/'+ ${ur.profilepicture}}"
+                                    class="img-fluid" alt="Product 1"style="width: 50px;height: 50px;border-radius: 70%" ></td>
+			      <td>[[${ur.name}]]</td>
+			      <td >[[${ur.email}]]</td>
+			      <td>[[${ur.city}]]</td>
+			      <td>[[${ur.state}]]</td>
+			      <td>[[${ur.isEnable}]]</td>
+			      <td><a th:href="@{'/admin/manageuser/'+${ur.id}}"  
+					      class="btn btn-danger"><i 
+					      class="fa-regular fa-trash-can"></i> Delete</a>
+					      
+					      <a th:href="@{'/admin/manageupdateuser?status=true&id='+${ur.id}}"  
+					      class="btn btn-success text-white"><i 
+					      class="fa-regular fa-trash-can"></i> Active</a>
+					      
+					      <a th:href="@{'/admin/manageupdateuser?status=false&id='+${ur.id}}"  
+					      class="btn btn-success text-white"><i 
+					      class="fa-regular fa-trash-can"></i> Inactive</a>
+					       </td>
+		                  
+			    </tr>
+			   </th:block>
+			  </tbody>
+			</table>
+           <div class="container mb-2 p-2">
+             <div class="col-md-2 offset-md-5">
+               <a th:href="@{/admin/}" class="form-control btn btn-warning text-center">Back</a>
+             </div>
+           </div>
+      </div>
+   </section>
+</body>
+</html>

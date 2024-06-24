@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=admin/base::layout(~{::section})>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+ 
+    <div class="container mt-1 p-2 text-center" >
+        <div class="card">
+        <p class="card-header"style="font-size:20px;font-weight: bold">All Products</p>
+        </div>
+        <div th:if="${session.message}" class="container text-center">
+        
+                               <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center my-1" role="alert">
+          
+                                  <span th:text="${session.message.contect}"></span>
+                                  <th:block th:text="${@sessionHelper.removeSessionFromHelper()}"></th:block>
+                              
+                              </div>
+
+                           </div>
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sl No.</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Discount</th>
+      <th scope="col">Discounted Price</th>
+       <th scope="col">Status</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody th:each="pr,p:${products}">
+    <tr>
+      <th scope="row">[[${p.count}]]</th>
+      <td>[[${pr.title}]]</td>
+      <td>[[${pr.pcategory}]]</td>
+      <td><img src="" th:src="@{'/img/product_img/'+ ${pr.upimg}}"
+                                    class="img-fluid" alt="Product 1"style="width: 40px;height: 60px" ></td>
+      <td>[[${pr.price}]]</td>
+      <td>[[${pr.discount}]]</td>
+      <td>[[${pr.discountedPrice}]]</td>
+      <td>[[${pr.isActive}]]</td>
+      <td>[[${pr.stock}]]</td>
+       <td>
+           <a th:href="@{'/admin/updatetview/'+${pr.id}}" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i>  Edit </a>
+           <a th:href="@{'/admin/deleteview/'+${pr.id}}"  class="btn btn-danger"><i class="fa-regular fa-trash-can"></i> Delete</a> 
+       </td>
+    </tr>
+  
+  </tbody>
+</table>
+
+   <div class="container">
+     <div class="row">
+        <div class="col-md-2 offset-md-5">
+           <a th:href="@{/admin/}" class="form-control btn btn-warning">Back</a>
+        </div>
+     </div>
+   </div>
+
+    </div>
+ 
+</section>
+</body>
+</html>
